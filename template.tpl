@@ -1,12 +1,4 @@
-___TERMS_OF_SERVICE___
-
-By creating or modifying this file you agree to Google Tag Manager's Community
-Template Gallery Developer Terms of Service available at
-https://developers.google.com/tag-manager/gallery-tos (or such other URL as
-Google may provide), as modified from time to time.
-
-
-___INFO___
+﻿___INFO___
 
 {
   "type": "TAG",
@@ -85,6 +77,177 @@ ___TEMPLATE_PARAMETERS___
     "checkboxText": "Spellcheck",
     "simpleValueType": true,
     "help": "Checks whether the query has come via spellcheck or not"
+  },
+  {
+    "type": "GROUP",
+    "name": "products",
+    "displayName": "Product info",
+    "groupStyle": "ZIPPY_OPEN",
+    "subParams": [
+      {
+        "type": "TEXT",
+        "name": "productId",
+        "displayName": "Product ID",
+        "simpleValueType": true,
+        "help": "Identifier of the product",
+        "valueHint": "i.e. 45gdfasd7543jdafs",
+        "valueValidators": [
+          {
+            "type": "NON_EMPTY"
+          }
+        ]
+      },
+      {
+        "type": "TEXT",
+        "name": "url",
+        "displayName": "URL",
+        "simpleValueType": true,
+        "valueHint": "i.e. https://mypdpppage.com ...",
+        "help": "URL of the product detail page corresponding to the clicked result",
+        "valueValidators": [
+          {
+            "type": "NON_EMPTY"
+          }
+        ]
+      },
+      {
+        "type": "TEXT",
+        "name": "title",
+        "displayName": "Title",
+        "simpleValueType": true,
+        "valueHint": "i.e. Jeans Flare Acid Wash, Red Matte Lipstick ...",
+        "help": "Title of the product detail page.",
+        "valueValidators": [
+          {
+            "type": "NON_EMPTY"
+          }
+        ]
+      },
+      {
+        "type": "TEXT",
+        "name": "position",
+        "displayName": "position",
+        "simpleValueType": true,
+        "valueHint": "i.e 1, 2, ...",
+        "help": "Global position in the search results of the product that was clicked",
+        "valueValidators": [
+          {
+            "type": "POSITIVE_NUMBER"
+          }
+        ]
+      },
+      {
+        "type": "SELECT",
+        "name": "a2cLocation",
+        "displayName": "Location",
+        "macrosInSelect": true,
+        "selectItems": [
+          {
+            "value": "results",
+            "displayValue": "Search Engine Results Page"
+          },
+          {
+            "value": "pdp",
+            "displayValue": "Product Detail Page"
+          }
+        ],
+        "simpleValueType": true,
+        "help": "Location where the event was raised. Allowed values are \"results\" (Search Engine Results Pages) and \"pdp\" (Product Detail Page)."
+      },
+      {
+        "type": "GROUP",
+        "name": "advancedProductSettings",
+        "displayName": "Advanced settings",
+        "groupStyle": "NO_ZIPPY",
+        "subParams": [
+          {
+            "type": "TEXT",
+            "name": "follow",
+            "displayName": "Follow",
+            "simpleValueType": true,
+            "help": "Set to false to avoid a redirection the page specified in the url - use true to return the response redirect",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              },
+              {
+                "type": "REGEX",
+                "args": [
+                  "^(true|false)$"
+                ]
+              }
+            ],
+            "defaultValue": false
+          },
+          {
+            "type": "SELECT",
+            "name": "type",
+            "displayName": "Type",
+            "macrosInSelect": true,
+            "selectItems": [
+              {
+                "value": 4,
+                "displayValue": "organic"
+              },
+              {
+                "value": 0,
+                "displayValue": "autocomplete"
+              },
+              {
+                "value": 2,
+                "displayValue": "sponsored"
+              },
+              {
+                "value": 3,
+                "displayValue": "banner"
+              },
+              {
+                "value": 5,
+                "displayValue": "direct_link"
+              },
+              {
+                "value": 6,
+                "displayValue": "wishlist_add"
+              },
+              {
+                "value": 7,
+                "displayValue": "wishlist_del"
+              },
+              {
+                "value": 100,
+                "displayValue": "topclicked"
+              },
+              {
+                "value": 101,
+                "displayValue": "synonymize"
+              },
+              {
+                "value": 102,
+                "displayValue": "suggestion"
+              },
+              {
+                "value": 200,
+                "displayValue": "dw_topclicked_section"
+              },
+              {
+                "value": 201,
+                "displayValue": "dw_products_of_queries"
+              },
+              {
+                "value": 202,
+                "displayValue": "dw_last_searches"
+              },
+              {
+                "value": 203,
+                "displayValue": "dw_last_searches"
+              }
+            ],
+            "simpleValueType": true,
+            "help": "Clicked result’s type. Defaults to \"organic\". Mandatory for show events. Valid values are \"autocomplete\" (0), \"sponsored\" (2), \"banner\" (3), \"organic\" (4), \"direct_link\" (5), \"wishlist_add\" (6), \"wishlist_del\" (7), \"topclicked\" (100), \"synonymize\" (101), \"suggestion\" (102), \"dw_topclicked_section\" (200), \"dw_products_of_queries\" (201), \"dw_last_searches\" (202), \"dw_contextualized_products\" (203)"
+          }
+        ]
+      }
+    ]
   },
   {
     "type": "GROUP",
@@ -341,142 +504,6 @@ ___TEMPLATE_PARAMETERS___
       }
     ],
     "help": "Filter parameters according to the valid filter names and values set on the tagging configuration."
-  },
-  {
-    "type": "TEXT",
-    "name": "productId",
-    "displayName": "Product ID",
-    "simpleValueType": true,
-    "help": "Identifier of the product",
-    "valueHint": "i.e. 45gdfasd7543jdafs",
-    "valueValidators": [
-      {
-        "type": "NON_EMPTY"
-      }
-    ]
-  },
-  {
-    "type": "TEXT",
-    "name": "url",
-    "displayName": "URL",
-    "simpleValueType": true,
-    "valueHint": "i.e. https://mypdpppage.com ...",
-    "help": "URL of the product detail page corresponding to the clicked result",
-    "valueValidators": [
-      {
-        "type": "NON_EMPTY"
-      }
-    ]
-  },
-  {
-    "type": "TEXT",
-    "name": "title",
-    "displayName": "Title",
-    "simpleValueType": true,
-    "valueHint": "i.e. Jeans Flare Acid Wash, Red Matte Lipstick ...",
-    "help": "Title of the product detail page.",
-    "valueValidators": [
-      {
-        "type": "NON_EMPTY"
-      }
-    ]
-  },
-  {
-    "type": "TEXT",
-    "name": "follow",
-    "displayName": "follow",
-    "simpleValueType": true,
-    "help": "Set to false to avoid a redirection the page specified in the url - use true to return the response redirect",
-    "valueHint": "i.e true, false",
-    "valueValidators": [
-      {
-        "type": "NON_EMPTY"
-      },
-      {
-        "type": "REGEX",
-        "args": [
-          "^(true|false)$"
-        ]
-      }
-    ]
-  },
-  {
-    "type": "TEXT",
-    "name": "position",
-    "displayName": "position",
-    "simpleValueType": true,
-    "valueHint": "i.e 1, 2, ...",
-    "help": "Global position in the search results of the product that was clicked",
-    "valueValidators": [
-      {
-        "type": "POSITIVE_NUMBER"
-      }
-    ]
-  },
-  {
-    "type": "RADIO",
-    "name": "type",
-    "displayName": "type",
-    "radioItems": [
-      {
-        "value": "organic",
-        "displayValue": "organic"
-      },
-      {
-        "value": "autocomplete",
-        "displayValue": "autocomplete"
-      },
-      {
-        "value": "sponsored",
-        "displayValue": "sponsored"
-      },
-      {
-        "value": "banner",
-        "displayValue": "banner"
-      },
-      {
-        "value": "direct_link",
-        "displayValue": "direct_link"
-      },
-      {
-        "value": "wishlist_add",
-        "displayValue": "wishlist_add"
-      },
-      {
-        "value": "wishlist_del",
-        "displayValue": "wishlist_del"
-      },
-      {
-        "value": "topclicked",
-        "displayValue": "topclicked"
-      },
-      {
-        "value": "synonymize",
-        "displayValue": "synonymize"
-      },
-      {
-        "value": "suggestion",
-        "displayValue": "suggestion"
-      },
-      {
-        "value": "dw_topclicked_section",
-        "displayValue": "dw_topclicked_section"
-      },
-      {
-        "value": "dw_products_of_queries",
-        "displayValue": "dw_products_of_queries"
-      },
-      {
-        "value": "dw_last_searches",
-        "displayValue": "dw_last_searches"
-      },
-      {
-        "value": "dw_contextualized_products",
-        "displayValue": "dw_contextualized_products"
-      }
-    ],
-    "simpleValueType": true,
-    "help": "Clicked result’s type. Defaults to \"organic\". Mandatory for show events. Valid values are \"autocomplete\" (0), \"sponsored\" (2), \"banner\" (3), \"organic\" (4), \"direct_link\" (5), \"wishlist_add\" (6), \"wishlist_del\" (7), \"topclicked\" (100), \"synonymize\" (101), \"suggestion\" (102), \"dw_topclicked_section\" (200), \"dw_products_of_queries\" (201), \"dw_last_searches\" (202), \"dw_contextualized_products\" (203)"
   }
 ]
 
@@ -613,6 +640,18 @@ if(typeof(data.follow) !== "undefined" && data.follow !== ""){
 //12.position (position):
 if(typeof(data.position) !== "undefined" && data.position !== ""){
 	parameters[i] = 'position=' + encodeUriComponent(data.position);
+	i++;
+}
+
+//13.type (type):
+if(typeof(data.type) !== "undefined" && data.type !== ""){
+	parameters[i] = 'type=' + encodeUriComponent(data.type);
+	i++;
+}
+
+//14.a2c location (a2cLocation):
+if(typeof(data.a2cLocation) !== "undefined" && data.a2cLocation !== ""){
+	parameters[i] = 'location=' + encodeUriComponent(data.a2cLocation);
 	i++;
 }
 
